@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int factorial(int n) {
+    int result = 1;
+    for (int i = 1; i <= n; i++) {
+        result = result * i;
+    }
+    return result;
+}
+
+int main() {
+    int x = 5;
+    int y = 10;
+    int sum = x + y;
+
+    if (sum > 10) {
+        printf("Sum is greater than 10\n");
+    } else {
+        printf("Sum is 10 or less\n");
+    }
+
+    int count = 0;
+    while (count < 3) {
+        printf("Count: %d\n", count);
+        count++;
+    }
+
+    int f = factorial(5);
+    printf("Factorial of 5 = %d\n", f);
+
+    return 0;
+}
+END

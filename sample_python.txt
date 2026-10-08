@@ -1,0 +1,36 @@
+def factorial(n):
+    result = 1
+    i = 1
+    while i <= n:
+        result = result * i
+        i = i + 1
+    return result
+
+def is_even(num):
+    if num % 2 == 0:
+        return True
+    else:
+        return False
+
+x = 10
+y = 3
+total = x + y
+
+if total > 10:
+    print("Total is greater than 10")
+elif total == 10:
+    print("Total is exactly 10")
+else:
+    print("Total is less than 10")
+
+numbers = [1, 2, 3, 4, 5]
+for n in numbers:
+    print(n)
+
+count = 0
+while count < 3:
+    print(count)
+    count = count + 1
+
+print(factorial(5))
+END

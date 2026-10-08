@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1020" />
+    <title>Compiler Studio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Compiler Studio home">
+          <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+          <span>compiler<span class="brand-light">studio</span></span>
+        </a>
+        <div class="topbar-center">
+          <span class="live-dot"></span> Local compiler environment
+        </div>
+        <a class="docs-link" href="#workspace"
+          >Workspace <span aria-hidden="true">↗</span></a
+        >
+      </header>
+
+      <main>
+        <section class="intro">
+          <div>
+            <div class="eyebrow">
+              <span class="eyebrow-line"></span> COMPILER PLAYGROUND
+            </div>
+            <h1>Turn code into <span>clarity.</span></h1>
+            <p>
+              Explore every stage of compilation, from tokens to three-address
+              code.
+            </p>
+          </div>
+          <div class="intro-note">
+            <span class="note-icon">✳</span
+            ><span
+              >Built for learning.<br /><strong
+                >Ready for experimentation.</strong
+              ></span
+            >
+          </div>
+        </section>
+
+        <section
+          class="workspace"
+          id="workspace"
+          aria-label="Compiler workspace"
+        >
+          <div class="workspace-bar">
+            <div
+              class="language-tabs"
+              role="tablist"
+              aria-label="Select a language"
+            >
+              <button
+                class="language-tab active"
+                data-language="C"
+                role="tab"
+                aria-selected="true"
+              >
+                <span class="language-dot c-dot"></span>C
+              </button>
+              <button
+                class="language-tab"
+                data-language="C++"
+                role="tab"
+                aria-selected="false"
+              >
+                <span class="language-dot cpp-dot"></span>C++
+              </button>
+              <button
+                class="language-tab"
+                data-language="Python"
+                role="tab"
+                aria-selected="false"
+              >
+                <span class="language-dot python-dot"></span>Python
+              </button>
+            </div>
+            <div class="workspace-actions">
+              <button class="text-button" id="load-example" type="button">
+                <span aria-hidden="true">↻</span> Load example
+              </button>
+              <button
+                class="icon-button"
+                id="clear-code"
+                type="button"
+                aria-label="Clear editor"
+                title="Clear editor"
+              >
+                <span aria-hidden="true">⌫</span>
+              </button>
+              <button class="run-button" id="compile-button" type="button">
+                <span class="play-icon" aria-hidden="true">▶</span
+                ><span>Compile</span><kbd>Ctrl ↵</kbd>
+              </button>
+            </div>
+          </div>
+
+          <div class="panels">
+            <section
+              class="panel editor-panel"
+              aria-labelledby="editor-heading"
+            >
+              <div class="panel-heading">
+                <div class="panel-title">
+                  <span class="window-dots"><i></i><i></i><i></i></span>
+                  <h2 id="editor-heading">Source code</h2>
+                  <span class="file-label" id="file-label">main.c</span>
+                </div>
+                <span class="panel-meta">EDITOR</span>
+              </div>
+              <div class="editor-wrap">
+                <div class="line-numbers" id="line-numbers" aria-hidden="true">
+                  1
+                </div>
+                <textarea
+                  id="code-editor"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  autocomplete="off"
+                  aria-label="Source code editor"
+                ></textarea>
+              </div>
+              <footer class="editor-footer">
+                <span><span class="footer-dot"></span> Ready</span
+                ><span id="code-stats">1 line · 0 chars</span>
+              </footer>
+            </section>
+
+            <section
+              class="panel output-panel"
+              aria-labelledby="output-heading"
+            >
+              <div class="panel-heading">
+                <div class="panel-title">
+                  <span class="terminal-icon" aria-hidden="true">&gt;_</span>
+                  <h2 id="output-heading">Compilation output</h2>
+                </div>
+                <div class="panel-meta">
+                  <span class="output-status" id="output-status">IDLE</span
+                  ><button
+                    class="copy-button"
+                    id="copy-output"
+                    type="button"
+                    aria-label="Copy output"
+                    title="Copy output"
+                  >
+                    Copy
+                  </button>
+                </div>
+              </div>
+              <div
+                class="output-content"
+                id="output-content"
+                role="log"
+                aria-live="polite"
+              >
+                <div class="empty-state">
+                  <div class="empty-icon" aria-hidden="true">
+                    <span>_</span><span>&gt;</span>
+                  </div>
+                  <h3>Ready when you are</h3>
+                  <p>
+                    Compile your source to see tokens, syntax tree, TAC, and
+                    more.
+                  </p>
+                  <button
+                    class="empty-compile"
+                    id="empty-compile"
+                    type="button"
+                  >
+                    <span aria-hidden="true">▶</span> Run compiler
+                  </button>
+                </div>
+              </div>
+              <footer class="output-footer">
+                <span id="output-message">Compiler stages will appear here</span
+                ><span class="output-language" id="output-language">C</span>
+              </footer>
+            </section>
+          </div>
+        </section>
+
+        <div class="feature-row" aria-label="Compiler features">
+          <div>
+            <span class="feature-number">01</span
+            ><span
+              ><strong>Lexical analysis</strong
+              ><small>Tokenize source code</small></span
+            >
+          </div>
+          <div>
+            <span class="feature-number">02</span
+            ><span
+              ><strong>Syntax analysis</strong
+              ><small>Build the parse tree</small></span
+            >
+          </div>
+          <div>
+            <span class="feature-number">03</span
+            ><span
+              ><strong>Intermediate code</strong
+              ><small>Inspect TAC output</small></span
+            >
+          </div>
+          <div class="supported">
+            <span class="supported-icon">✓</span
+            ><span
+              ><strong>3 languages supported</strong
+              ><small>C · C++ · Python</small></span
+            >
+          </div>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <span
+          >COMPILER STUDIO <span class="footer-separator">/</span> EDUCATIONAL
+          TOOLKIT</span
+        ><span>Runs locally on your machine</span>
+      </footer>
+    </div>
+  </body>
+</html>
